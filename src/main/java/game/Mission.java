@@ -24,6 +24,19 @@ public class Mission {
 
     }
 
+    @PostUpdate
+    public void onPostUpdate(){
+        MissionUpdated missionUpdated = new MissionUpdated();
+//        BeanUtils.copyProperties(this, missionUpdated);
+        missionUpdated.setCustomerId(this.customerId);
+        missionUpdated.setId(this.id);
+        missionUpdated.setRewardId(this.rewardId);
+        missionUpdated.setStatus(this.status);
+        missionUpdated.publishAfterCommit();
+
+
+    }
+
 
     public Long getId() {
         return id;
