@@ -36,4 +36,17 @@ public class PolicyHandler{
         }
     }
 
+    @StreamListener(KafkaProcessor.INPUT)
+    public void wheneverMessageUpdated_SendMessage(@Payload MessageUpdated messageUpdated){
+
+
+        // 카카오톡 메시지 보냄 확인 로직
+        //
+        //
+        //
+        if(messageUpdated.isMe()){
+            System.out.println("##### listener SendMessage : " + messageUpdated.toJson());
+        }
+    }
+
 }
